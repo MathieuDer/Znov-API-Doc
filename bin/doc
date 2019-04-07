@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+source $PWD/bin/.env
+
+API_FILE_PATH=/data/src/$API_ENTRY_FILE
+OUTPUT_FILE_PATH=/data/dist/api.html
+
+action=$1
+build() {
+    docker-compose run --rm  -v $SPEC_DIR:/data/src -v $DIST_DIR:/data/dist redoc-cli bundle $API_FILE_PATH -o $OUTPUT_FILE_PATH
+}
+
+if [[ $action = "build" ]] ; then
+    build;
+elif [[ $action = "serve" ]] ; then
+    echo "TBD"
+else
+    echo "Help"
+fi

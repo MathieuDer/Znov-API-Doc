@@ -1,0 +1,6 @@
+version: '2'
+
+services:
+  redoc-cli:
+    build: .
+    container_name: redoc-cli

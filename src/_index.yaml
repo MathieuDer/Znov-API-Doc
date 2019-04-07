@@ -1,0 +1,72 @@
+openapi: 3.0.2
+
+info:
+  title: ZNOV API Documentation
+  x-logo:
+    url: "./img/Logo_Znov.png"
+    altText: "ZNOV Logo"
+  termsOfService: https://github.com/MathieuDer/Znov-API
+  contact:
+    name: API Support
+    url: https://github.com/MathieuDer/Znov-API
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+  description: |
+    # Introduction
+    Cette API est documentée au format **OpenAPI** et est basée sur l'[API Znov] (https://github.com/MathieuDer/Znov-API) .
+    Elle a été créé pour illustrer les fonctionnalités de l'API destinée à l'outils de gestion d'environnement pédagogique **Z-Note**.
+    # Cross-Origin 
+    Cette API implémente le partage de ressources Cross-Origin (CORS) permettant une communication interdomaine à partir des navigateurs.
+    Toutes les réponses possède la même origine générique qui les rend complètement publiques et accessibles à toute personne possédant un compte utilisatur.
+    # Authentification
+    L'authentification des requêtes est réalisée à l'aide d'un **Token** JWT (JsonWebToken). 
+    Vous pouvez en générer en vous connectant à l'API avec un compte utilisateur qui vous sera transmis par l'administrateur.
+    Pour chaque requête à l'API, vous devez inclure le **Token** avec un préfixe "Bearer".
+
+servers:
+  - url: http://localhost:3000/
+    description: Serveur de développement 
+
+tags:
+  $ref: tags.yaml
+
+x-tagGroups: 
+  - name: utilisateur
+    tags: [ Création utilisateur, Mise à jour utilisateur, Récupération utilisateur, Suppression utilisateur ]
+  - name: école
+    tags: [ Création école, Mise à jour école, Récupération école, Suppression école ]
+  - name: classe
+    tags: [ Création classe, Mise à jour classe, Récupération classe, Suppression classe ]
+  - name: rôle
+    tags: [ Création rôle, Mise à jour rôle, Récupération rôle, Suppression rôle ]
+  - name: module
+    tags: [ Création module, Mise à jour module, Récupération module, Suppression module ]
+  - name: matière
+    tags: [ Création matière, Mise à jour matière, Récupération matière, Suppression matière ]
+  - name: salle
+    tags: [ Création salle, Mise à jour salle, Récupération salle, Suppression salle ]
+  - name: cours
+    tags: [ Création cours, Mise à jour cours, Récupération cours, Suppression cours ]
+  - name: bulletin
+    tags: [ Création bulletin, Mise à jour bulletin, Récupération bulletin, Suppression bulletin ]
+
+
+
+components:
+  examples:
+    $ref: examples.yaml
+  headers:
+    $ref: headers.yaml
+  parameters:
+    $ref: parameters.yaml
+  requestBodies:
+    $ref: requestBodies.yaml
+  responses:
+    $ref: responses.yaml
+  schemas:
+    $ref: schemas.yaml
+
+paths:
+  $ref: paths.yaml

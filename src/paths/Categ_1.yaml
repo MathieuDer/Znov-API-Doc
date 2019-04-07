@@ -1,0 +1,10 @@
+categs:
+  get:
+    summary: Retrieve all accounts
+    description: Retrieve all accounts of Freelance Hub
+    operationId: getAccounts
+    tags: [ Sous categ 1 ]
+    responses:
+      "204":
+        description: List of accounts
+        
