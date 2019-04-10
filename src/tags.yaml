@@ -1,80 +1,26 @@
-- name : Création utilisateur
-  descrption: Création d'un nouvel utilisateur
-- name : Mise à jour utilisateur
-  descrption: Mise à jour d'un utilisateur existant
-- name : Récupération utilisateur
-  descrption: Récuparation des données d'un utilisateur existant
-- name : Suppression utilisateur
-  descrption: Suppression d'un utilisateur existant
+- name: Utilisateurs
+  description: Gestion des utilisateurs
 
-- name : Création école
-  descrption: Création d'une nouvelle école
-- name : Mise à jour école
-  descrption: Mise à jour d'une école existante
-- name : Récupération école
-  descrption: Récuparation des données d'une école existante
-- name : Suppression école
-  descrption: Suppression d'une école existante
+- name: Écoles
+  description: Gestion des écoles
 
-- name : Création classe
-  descrption: Création d'une nouvelle classe
-- name : Mise à jour classe
-  descrption: Mise à jour d'unz classe existante
-- name : Récupération classe
-  descrption: Récuparation des données d'unz classe existante
-- name : Suppression classe
-  descrption: Suppression d'unz classe existante
+- name: Classes
+  description: Gestion des classes
 
-- name : Création rôle
-  descrption: Création d'un nouveau rôle
-- name : Mise à jour rôle
-  descrption: Mise à jour d'un rôle existant
-- name : Récupération rôle
-  descrption: Récuparation des données d'un rôle existant
-- name : Suppression rôle
-  descrption: Suppression d'un rôle existant
+- name: Rôles
+  description: Gestion des rôles
 
-- name : Création module
-  descrption: Création d'un nouveau module
-- name : Mise à jour module
-  descrption: Mise à jour d'un module existant
-- name : Récupération module
-  descrption: Récuparation des données d'un module existant
-- name : Suppression module
-  descrption: Suppression d'un module existant
+- name: Modules
+  description: Gestion des modules
 
-- name : Création matière
-  descrption: Création d'une nouvelle matière
-- name : Mise à jour matière
-  descrption: Mise à jour d'une matière existante
-- name : Récupération matière
-  descrption: Récuparation des données d'une matière existante
-- name : Suppression matière
-  descrption: Suppression d'une matière existante
+- name: Matières
+  description: Gestion des matières
 
-- name : Création salle
-  descrption: Création d'une nouvelle salle
-- name : Mise à jour salle
-  descrption: Mise à jour d'une salle existante
-- name : Récupération salle
-  descrption: Récuparation des données d'une salle existante
-- name : Suppression salle
-  descrption: Suppression d'une salle existante
+- name: Salles
+  description: Gestion des salles
 
-- name : Création cours
-  descrption: Création d'un nouveau cours
-- name : Mise à jour cours
-  descrption: Mise à jour d'un cours existant
-- name : Récupération cours
-  descrption: Récuparation des données d'un cours existant
-- name : Suppression cours
-  descrption: Suppression d'un cours existant
+- name: Cours
+  description: Gestion des cours
 
-- name : Création bulletin
-  descrption: Création d'un nouveau bulletin
-- name : Mise à jour bulletin
-  descrption: Mise à jour d'un bulletin existant
-- name : Récupération bulletin
-  descrption: Récuparation des données d'un bulletin existant
-- name : Suppression bulletin
-  descrption: Suppression d'un bulletin existant
+- name: Bulletins
+  description: Gestion des bulletins

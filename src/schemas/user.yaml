@@ -1,0 +1,26 @@
+type: object
+properties:
+  id:
+    type: integer
+  prenom:
+    type: string
+  nom:
+    type: string
+  email_perso:
+    type: string
+  email_ecole:
+    type: string
+  password:
+    type: string
+  telephone:
+    type: string
+  adresse:
+    type: string
+  date_naissance:
+    type: string
+  ville_naissance:
+    type: string
+  classeId:
+    type: integer
+  roleId:
+    type: integer

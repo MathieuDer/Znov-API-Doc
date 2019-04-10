@@ -1,0 +1,12 @@
+type: object
+properties:
+  id:
+    type: integer
+  numero:
+    type: integer
+  etage:
+    type: integer
+  description:
+    type: string
+  batiment:
+    type: string

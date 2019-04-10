@@ -1,0 +1,23 @@
+Badge:
+  $ref: ./schemas/badge.yaml
+Bulletin:
+  $ref: ./schemas/bulletin.yaml
+Classe:
+  $ref: ./schemas/classe.yaml
+Cours:
+  $ref: ./schemas/cours.yaml
+École:
+  $ref: ./schemas/ecole.yaml
+Matière:
+  $ref: ./schemas/matiere.yaml
+Module:
+  $ref: ./schemas/module.yaml
+Passage:
+  $ref: ./schemas/passage.yaml
+Rôle:
+  $ref: ./schemas/role.yaml
+Salle:
+  $ref: ./schemas/salle.yaml
+User:
+  $ref: ./schemas/user.yaml
+  

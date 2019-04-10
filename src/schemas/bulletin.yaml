@@ -1,0 +1,14 @@
+type: object
+properties:
+  id:
+    type: integer
+  note:
+    type: float
+  present:
+    type: boolean
+  justificatif:
+    type: string
+  coursId:
+    type: integer
+  userId:
+    type: integer

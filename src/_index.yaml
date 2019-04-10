@@ -33,26 +33,10 @@ tags:
   $ref: tags.yaml
 
 x-tagGroups: 
-  - name: utilisateur
-    tags: [ Création utilisateur, Mise à jour utilisateur, Récupération utilisateur, Suppression utilisateur ]
-  - name: école
-    tags: [ Création école, Mise à jour école, Récupération école, Suppression école ]
-  - name: classe
-    tags: [ Création classe, Mise à jour classe, Récupération classe, Suppression classe ]
-  - name: rôle
-    tags: [ Création rôle, Mise à jour rôle, Récupération rôle, Suppression rôle ]
-  - name: module
-    tags: [ Création module, Mise à jour module, Récupération module, Suppression module ]
-  - name: matière
-    tags: [ Création matière, Mise à jour matière, Récupération matière, Suppression matière ]
-  - name: salle
-    tags: [ Création salle, Mise à jour salle, Récupération salle, Suppression salle ]
-  - name: cours
-    tags: [ Création cours, Mise à jour cours, Récupération cours, Suppression cours ]
-  - name: bulletin
-    tags: [ Création bulletin, Mise à jour bulletin, Récupération bulletin, Suppression bulletin ]
-
-
+  - name: Gestion des utilisateurs
+    tags: [Utilisateurs]
+  - name: Général
+    tags: [Écoles, Classes, Rôles, Modules, Matières, Salles, Cours, Bulletins]
 
 components:
   examples:

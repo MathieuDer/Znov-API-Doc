@@ -1,0 +1,16 @@
+type: object
+properties:
+  id:
+    type: integer
+  intitule:
+    type: string
+  debut:
+    type: date
+  fin:
+    type: date
+  matiereId:
+    type: integer
+  salleId:
+    type: integer
+  intervenantId:
+    type: integer

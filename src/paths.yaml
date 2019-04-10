@@ -1,2 +1,1 @@
-/categs:
-  $ref: 'paths/Categ_1.yaml#/categs'
+$ref: ./paths/user.yaml
