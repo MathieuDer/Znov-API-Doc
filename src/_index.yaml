@@ -20,7 +20,7 @@ info:
     # Cross-Origin 
     Cette API implémente le partage de ressources Cross-Origin (CORS) permettant une communication interdomaine à partir des navigateurs.
     Toutes les réponses possède la même origine générique qui les rend complètement publiques et accessibles à toute personne possédant un compte utilisatur.
-    # Authentification
+    # Json Web Token
     L'authentification des requêtes est réalisée à l'aide d'un **Token** JWT (JsonWebToken). 
     Vous pouvez en générer en vous connectant à l'API avec un compte utilisateur qui vous sera transmis par l'administrateur.
     Pour chaque requête à l'API, vous devez inclure le **Token** avec un préfixe "Bearer".
@@ -33,6 +33,8 @@ tags:
   $ref: tags.yaml
 
 x-tagGroups: 
+  - name: Authentification à l'API
+    tags: [Authentification]
   - name: Gestion des utilisateurs
     tags: [Utilisateurs]
   - name: Général

@@ -1,1 +1,242 @@
-$ref: ./paths/user.yaml
+# Auth
+/auth/login:
+  post:
+    tags:
+      - Authentification
+    summary: Connecte un utilisateur
+
+# Users
+/users:
+  get:
+    tags:
+      - Utilisateurs
+    summary: Liste tous les utilisateurs
+  post:
+    tags:
+      - Utilisateurs
+    summary: Crée un nouvel utilisateur
+'/users/profiles/{userId}':    
+  get:
+    tags:
+      - Utilisateurs
+    summary: Affiche les détails d'un utilisateur
+  put:
+    tags:
+      - Utilisateurs
+    summary: Met à jour un utilisateur
+  delete:
+    tags:
+      - Utilisateurs
+    summary: Supprime un utilisateur
+'/users/{userId}/courses':    
+  get:
+    tags:
+      - Utilisateurs
+    summary: Liste les cours d'un utilisateur
+'/users/{userId}/reports/stats':    
+  get:
+    tags:
+      - Utilisateurs
+    summary: Statistiques du dashboard utilisateur
+
+# Bulletin
+/reports:
+  get:
+    tags:
+      - Bulletins
+    summary: Liste tous les bulletins
+  post:
+    tags:
+      - Bulletins
+    summary: Crée un nouveau bulletin
+'/reports/{reportId}':    
+  get:
+    tags:
+      - Bulletins
+    summary: Affiche les détails d'un bulletin
+  put:
+    tags:
+      - Bulletins
+    summary: Met à jour un bulletin
+  delete:
+    tags:
+      - Bulletins
+    summary: Supprime un bulletin
+
+# Classe
+/class:
+  get:
+    tags:
+      - Classes
+    summary: Liste toutes les classes
+  post:
+    tags:
+      - Classes
+    summary: Crée une nouvelle classe
+'/class/{classId}':    
+  get:
+    tags:
+      - Classes
+    summary: Affiche les détails d'une classe
+  put:
+    tags:
+      - Classes
+    summary: Met à jour une classe
+  delete:
+    tags:
+      - Classes
+    summary: Supprime une classe
+'/class/{classId}/users':    
+  get:
+    tags:
+      - Classes
+    summary: Liste les utilisateurs d'une classe
+
+# Cours
+/lessons:
+  get:
+    tags:
+      - Cours
+    summary: Liste les cours
+  post:
+    tags:
+      - Cours
+    summary: Crée un nouveau cours
+'/lessons/{lessonId}':    
+  get:
+    tags:
+      - Cours
+    summary: Affiche les détails d'un cours
+  put:
+    tags:
+      - Cours
+    summary: Met à jour un cours
+  delete:
+    tags:
+      - Cours
+    summary: Supprime un cours
+
+# École
+/schools:
+  get:
+    tags:
+      - Écoles
+    summary: Liste les écoles
+  post:
+    tags:
+      - Écoles
+    summary: Crée une nouvelle école
+'/schools/{schoolId}':    
+  get:
+    tags:
+      - Écoles
+    summary: Affiche les détails d'une école
+  put:
+    tags:
+      - Écoles
+    summary: Met à jour une école
+  delete:
+    tags:
+      - Écoles
+    summary: Supprime une école
+
+# Module
+/subjects:
+  get:
+    tags:
+      - Matières
+    summary: Liste les matières
+  post:
+    tags:
+      - Matières
+    summary: Crée une nouvelle matière
+'/subjects/{subjectId}':    
+  get:
+    tags:
+      - Matières
+    summary: Affiche les détails d'une matière
+  put:
+    tags:
+      - Matières
+    summary: Met à jour une matière
+  delete:
+    tags:
+      - Matières
+    summary: Supprime une matière
+
+# Module
+/modules:
+  get:
+    tags:
+      - Modules
+    summary: Liste tous les modules
+  post:
+    tags:
+      - Modules
+    summary: Crée un nouveau module
+'/modules/{moduleId}':    
+  get:
+    tags:
+      - Modules
+    summary: Affiche les détails d'un module
+  put:
+    tags:
+      - Modules
+    summary: Met à jour un module
+  delete:
+    tags:
+      - Modules
+    summary: Supprime un module
+      
+# Rôle
+/roles:
+  get:
+    tags:
+      - Rôles
+    summary: Liste tous les rôle
+  post:
+    tags:
+      - Rôles
+    summary: Crée un nouveau rôle
+'/roles/{roleId}':    
+  get:
+    tags:
+      - Rôles
+    summary: Affiche les détails d'un rôle
+  put:
+    tags:
+      - Rôles
+    summary: Met à jour un rôle
+  delete:
+    tags:
+      - Rôles
+    summary: Supprime un rôle
+'/roles/{roleId}/users':    
+  get:
+    tags:
+      - Rôles
+    summary: Liste les utilisateurs d'un rôle
+
+# Salle
+/rooms:
+  get:
+    tags:
+      - Salles
+    summary: Liste toutes les salles
+  post:
+    tags:
+      - Salles
+    summary: Crée une nouvelle salle
+'/rooms/{roomId}':    
+  get:
+    tags:
+      - Salles
+    summary: Affiche les détails d'une salle
+  put:
+    tags:
+      - Salles
+    summary: Met à jour une salle
+  delete:
+    tags:
+      - Salles
+    summary: Supprime une salle
