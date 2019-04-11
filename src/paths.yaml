@@ -42,6 +42,7 @@
         description: Impossible de trouver les utilisateurs
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -61,10 +62,59 @@
         description: Impossible d'enregistrer l'utilisateur ou de vérifier si l'utilisateur existe
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
           type: string
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              prenom:
+                type: string
+                description: Prénom de l'utilisateur
+                required: true
+              nom:
+                type: string
+                description: Nom de l'utilisateur
+                required: true
+              email_perso:
+                type: string
+                description: Email personnel de l'utilisateur
+                required: true
+              email_ecole:
+                type: string
+                description: Adresse email de l'école de l'utilsiateur
+                required: true
+              telephone:
+                type: number
+                description: Numéro de téléphone de l'utilisateur
+                required: true
+              password:
+                type: string
+                description: Mot de passe de l'utilisateur
+                required: true
+              adresse:
+                type: string
+                description: Adresse complète de l'utilisateur
+                required: true
+              date_naissance:
+                type: date
+                description: Date de naissance de l'utilisateur
+                required: true
+              ville_naissance:
+                type: string
+                description: Ville de naissance de l'utilisateur
+                required: true
+              roleId:
+                type: integer
+                description: ID du rôle de l'utilisateur
+                required: true
+              classeId:
+                type: integer
+                description: ID de la classe de l'utilisateur
 '/users/profiles/{userId}':    
   get:
     tags:
@@ -81,6 +131,7 @@
         description: Impossible de trouver l'utilisateur
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -106,6 +157,7 @@
         description: Impossible de mettre à jour l'utilisateur ou de le chercher en base
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -116,6 +168,44 @@
         required: true
         schema:
           type: integer
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              prenom:
+                type: string
+                description: Prénom de l'utilisateur
+              nom:
+                type: string
+                description: Nom de l'utilisateur
+              email_perso:
+                type: string
+                description: Email personnel de l'utilisateur
+              email_ecole:
+                type: string
+                description: Adresse email de l'école de l'utilsiateur
+              telephone:
+                type: number
+                description: Numéro de téléphone de l'utilisateur
+              password:
+                type: string
+                description: Mot de passe de l'utilisateur
+              adresse:
+                type: string
+                description: Adresse complète de l'utilisateur
+              date_naissance:
+                type: date
+                description: Date de naissance de l'utilisateur
+              ville_naissance:
+                type: string
+                description: Ville de naissance de l'utilisateur
+              roleId:
+                type: integer
+                description: ID du rôle de l'utilisateur
+              classeId:
+                type: integer
+                description: ID de la classe de l'utilisateur
   delete:
     tags:
       - Utilisateurs
@@ -131,6 +221,7 @@
         description: Impossible de supprimer l'utilisateur ou de le chercher en base
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -157,6 +248,7 @@
         description: Impossible de trouver les cours
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -183,6 +275,7 @@
         description: Impossible de trouver les bulletins
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -211,6 +304,7 @@
         description: Impossible de trouver les bulletins
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -230,10 +324,31 @@
         description: Impossible d'enregistrer le bulletin ou de vérifier si le bulletin existe
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
           type: string
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              note:
+                type: number
+                description: Note de l'utilisateur
+              present:
+                type: boolean
+                description: L'utilisateur est présent au cours
+              justificatif:
+                type: string
+                description: Justificatif d'absence
+              coursId: 
+                type: integer
+                description: ID du cours
+              userId: 
+                type: integer
+                description: ID de l'utilisateur
 '/reports/{reportId}':    
   get:
     tags:
@@ -250,6 +365,7 @@
         description: Impossible de trouver le bulletin
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -275,6 +391,7 @@
         description: Impossible de mettre à jour le bulletin ou de le chercher en base
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -285,6 +402,26 @@
         required: true
         schema:
           type: integer
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              note:
+                type: number
+                description: Note de l'utilisateur
+              present:
+                type: boolean
+                description: L'utilisateur est présent au cours
+              justificatif:
+                type: string
+                description: Justificatif d'absence
+              coursId: 
+                type: integer
+                description: ID du cours
+              userId: 
+                type: integer
+                description: ID de l'utilisateur
   delete:
     tags:
       - Bulletins
@@ -300,6 +437,7 @@
         description: Impossible de supprimer le bulletin ou de le chercher en base
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -328,6 +466,7 @@
         description: Impossible de trouver les classes
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -347,10 +486,24 @@
         description: Impossible d'enregistrer la classe ou de vérifier si la classe existe
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
           type: string
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              nom:
+                type: string
+                description: Nom de la classe
+                required: true
+              ecoleId:
+                type: integer
+                description: ID de l'école
+                required: true
 '/class/{classId}':    
   get:
     tags:
@@ -367,6 +520,7 @@
         description: Impossible de trouver la classe
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -392,6 +546,7 @@
         description: Impossible de mettre à jour la classe ou de la chercher en base
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -402,6 +557,17 @@
         required: true
         schema:
           type: integer
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              nom:
+                type: string
+                description: Nom de la classe
+              ecoleId:
+                type: integer
+                description: ID de l'école
   delete:
     tags:
       - Classes
@@ -417,6 +583,7 @@
         description: Impossible de supprimer la classe ou de la chercher en base
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -443,6 +610,7 @@
         description: Impossible de trouver les utilisateurs
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -471,6 +639,7 @@
         description: Impossible de trouver les cours
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -490,10 +659,31 @@
         description: Impossible d'enregistrer le cours ou de vérifier si le cours existe
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
           type: string
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              intitule:
+                type: string
+                description: Intitule du cours
+              debut:
+                type: datetime
+                description: Début du cours
+              fin:
+                type: datetime
+                description: Fin du cours
+              matiereId: 
+                type: integer
+                description: ID de la matière de cours
+              salleId: 
+                type: integer
+                description: ID de la salle de cours
 '/lessons/{lessonId}':    
   get:
     tags:
@@ -510,6 +700,7 @@
         description: Impossible de trouver le cours
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -535,6 +726,7 @@
         description: Impossible de mettre à jour le cours ou de le chercher en base
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -545,6 +737,26 @@
         required: true
         schema:
           type: integer
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              intitule:
+                type: string
+                description: Intitule du cours
+              debut:
+                type: datetime
+                description: Début du cours
+              fin:
+                type: datetime
+                description: Fin du cours
+              matiereId: 
+                type: integer
+                description: ID de la matière de cours
+              salleId: 
+                type: integer
+                description: ID de la salle de cours
   delete:
     tags:
       - Cours
@@ -560,6 +772,7 @@
         description: Impossible de supprimer le cours ou de le chercher en base
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -588,6 +801,7 @@
         description: Impossible de trouver les écoles
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -607,10 +821,21 @@
         description: Impossible d'enregistrer l'école ou de vérifier si l'école existe
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
           type: string
+          requestBody:
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              nom:
+                type: string
+                description: Nom de l'école
+                required: true
 '/schools/{schoolId}':    
   get:
     tags:
@@ -627,6 +852,7 @@
         description: Impossible de trouver l'école
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -652,6 +878,7 @@
         description: Impossible de mettre à jour l'école ou de la chercher en base
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -662,6 +889,15 @@
         required: true
         schema:
           type: integer
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              nom:
+                type: string
+                description: Nom de l'école
+                required: true
   delete:
     tags:
       - Écoles
@@ -677,6 +913,7 @@
         description: Impossible de supprimer l'école ou de la chercher en base
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -688,7 +925,7 @@
         schema:
           type: integer
 
-# Module
+# Matière
 /subjects:
   get:
     tags:
@@ -705,6 +942,7 @@
         description: Impossible de trouver les matières
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -724,10 +962,22 @@
         description: Impossible d'enregistrer la matière ou de vérifier si la matière existe
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
           type: string
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              intitule:
+                type: string
+                description: Nom de la matière
+              moduleId: 
+                type: integer
+                description: ID du module   
 '/subjects/{subjectId}':    
   get:
     tags:
@@ -744,6 +994,7 @@
         description: Impossible de mettre à jour la matière ou de la chercher en base
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -769,6 +1020,7 @@
         description: Impossible de mettre à jour la matière ou de la chercher en base
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -779,6 +1031,17 @@
         required: true
         schema:
           type: integer
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              intitule:
+                type: string
+                description: Nom de la matière
+              moduleId: 
+                type: integer
+                description: ID du module
   delete:
     tags:
       - Matières
@@ -794,6 +1057,7 @@
         description: Impossible de supprimer la matière ou de la chercher en base
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -822,6 +1086,7 @@
         description: Impossible de trouver les modules  
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -841,10 +1106,19 @@
         description: Impossible d'enregistrer le module ou de vérifier si le module existe
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
           type: string
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              intitule:
+                type: string
+                description: Nom du module
 '/modules/{moduleId}':    
   get:
     tags:
@@ -861,6 +1135,7 @@
         description: Impossible de trouver le module
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -886,6 +1161,7 @@
         description: Impossible de mettre à jour le module ou de le chercher en base
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -896,6 +1172,14 @@
         required: true
         schema:
           type: integer
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              intitule:
+                type: string
+                description: Nom du module
   delete:
     tags:
       - Modules
@@ -911,6 +1195,7 @@
         description: Impossible de supprimer le module ou de le chercher en base
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -939,6 +1224,7 @@
         description: Impossible de trouver les rôles
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -958,10 +1244,20 @@
         description: Impossible d'enregistrer le rôle ou de vérifier si le rôle existe
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
           type: string
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              nom:
+                type: string
+                description: Nom du rôle
+                required: true
 '/roles/{roleId}':    
   get:
     tags:
@@ -978,6 +1274,7 @@
         description: Impossible de trouver le rôle
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -1003,6 +1300,7 @@
         description: Impossible de mettre à jour le rôle ou de le chercher en base
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -1013,6 +1311,14 @@
         required: true
         schema:
           type: integer
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              nom:
+                type: string
+                description: Nom du rôle
   delete:
     tags:
       - Rôles
@@ -1028,6 +1334,7 @@
         description: Impossible de supprimer le rôle ou de le chercher en base
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -1055,6 +1362,7 @@
         description: Impossible de trouver les utilisateurs
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -1083,6 +1391,7 @@
         description: Impossible de trouver les salles
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -1102,10 +1411,29 @@
         description: Impossible d'enregistrer la salle ou de vérifier si la salle existe
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
           type: string
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              numero:
+                type: number
+                description: Nom de la salle
+                required: true
+              etage:
+                type: number 
+                description: Étage de la salle
+              description:
+                type: string
+                description: Description de la salle
+              batiment:
+                type: string
+                description: Bâtiment dans lequel se situe la salle
 '/rooms/{roomId}':    
   get:
     tags:
@@ -1122,6 +1450,7 @@
         description: Impossible de trouver la salle
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -1147,6 +1476,7 @@
         description: Impossible de mettre à jour la salle ou de la chercher en base
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
@@ -1157,6 +1487,23 @@
         required: true
         schema:
           type: integer
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              numero:
+                type: number
+                description: Nom de la salle
+              etage:
+                type: number 
+                description: Étage de la salle
+              description:
+                type: string
+                description: Description de la salle
+              batiment:
+                type: string
+                description: Bâtiment dans lequel se situe la salle
   delete:
     tags:
       - Salles
@@ -1172,6 +1519,7 @@
         description: Impossible de supprimer la salle ou de la chercher en base
     parameters:
       - name: Authorization
+        required: true
         description: Bearer Token
         in: header
         schema:
