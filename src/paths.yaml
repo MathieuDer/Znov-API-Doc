@@ -3,7 +3,18 @@
   post:
     tags:
       - Authentification
-    summary: Connection d'un utilisateur
+    summary: Connexion d'un utilisateur
+    requestBody:
+      content:
+        application/json:
+          schema:
+            properties:
+              email_ecole:
+                type: string
+                description: Adresse email de l'école de l'utilsiateur
+              password:
+                type: string
+                description: Mot de passe de l'utilisateur
     responses:
       '200':
         description: Opération réussie
@@ -21,81 +32,167 @@
       - Utilisateurs
     summary: Liste tous les utilisateurs
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '201':
         description: Opération réussie 
       '409':
         description: Utilisateurs introuvables
       '500': 
         description: Impossible de trouver les utilisateurs
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
   post:
     tags:
       - Utilisateurs
-    summary: Crée un nouvel utilisateur
+    summary: Créer un nouvel utilisateur
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Utilisateur déjà présent en base
       '500': 
         description: Impossible d'enregistrer l'utilisateur ou de vérifier si l'utilisateur existe
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
 '/users/profiles/{userId}':    
   get:
     tags:
       - Utilisateurs
     summary: Affiche les détails d'un utilisateur
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '201':
         description: Opération réussie 
       '409':
         description: Utilisateur introuvable
       '500': 
         description: Impossible de trouver l'utilisateur
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: userId
+        in: path
+        description: ID de l'utilisateur
+        required: true
+        schema:
+          type: integer
   put:
     tags:
       - Utilisateurs
     summary: Met à jour un utilisateur
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Utilisateur introuvable
       '500': 
         description: Impossible de mettre à jour l'utilisateur ou de le chercher en base
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: userId
+        in: path
+        description: ID de l'utilisateur
+        required: true
+        schema:
+          type: integer
   delete:
     tags:
       - Utilisateurs
     summary: Supprime un utilisateur
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Utilisateur introuvable
       '500': 
         description: Impossible de supprimer l'utilisateur ou de le chercher en base
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: userId
+        in: path
+        description: ID de l'utilisateur
+        required: true
+        schema:
+          type: integer
 '/users/{userId}/courses':    
   get:
     tags:
       - Utilisateurs
     summary: Liste les cours d'un utilisateur
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '201':
         description: Opération réussie 
       '409':
         description: Cours introuvables
       '500': 
         description: Impossible de trouver les cours
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: userId
+        in: path
+        description: ID de l'utilisateur
+        required: true
+        schema:
+          type: integer
 '/users/{userId}/reports/stats':    
   get:
     tags:
       - Utilisateurs
     summary: Statistiques du dashboard utilisateur
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '201':
         description: Opération réussie 
       '409':
         description: Bulletins introuvables
       '500': 
         description: Impossible de trouver les bulletins
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: userId
+        in: path
+        description: ID de l'utilisateur
+        required: true
+        schema:
+          type: integer
 
 # Bulletin
 /reports:
@@ -104,57 +201,115 @@
       - Bulletins
     summary: Liste tous les bulletins
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '201':
         description: Opération réussie 
       '409':
         description: Bulletins introuvables
       '500': 
         description: Impossible de trouver les bulletins
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
   post:
     tags:
       - Bulletins
-    summary: Crée un nouveau bulletin
+    summary: Créer un nouveau bulletin
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Bulletin déjà présent en base
       '500': 
         description: Impossible d'enregistrer le bulletin ou de vérifier si le bulletin existe
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
 '/reports/{reportId}':    
   get:
     tags:
       - Bulletins
     summary: Affiche les détails d'un bulletin
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '201':
         description: Opération réussie 
       '409':
         description: Bulletin introuvable
       '500': 
         description: Impossible de trouver le bulletin
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: reportId
+        in: path
+        description: ID du bulletin
+        required: true
+        schema:
+          type: integer
   put:
     tags:
       - Bulletins
     summary: Met à jour un bulletin
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Bulletin introuvable
       '500': 
         description: Impossible de mettre à jour le bulletin ou de le chercher en base
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: reportId
+        in: path
+        description: ID du bulletin
+        required: true
+        schema:
+          type: integer
   delete:
     tags:
       - Bulletins
     summary: Supprime un bulletin
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Bulletin introuvable
       '500': 
         description: Impossible de supprimer le bulletin ou de le chercher en base
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: reportId
+        in: path
+        description: ID du bulletin
+        required: true
+        schema:
+          type: integer
 
 # Classe
 /class:
@@ -163,70 +318,141 @@
       - Classes
     summary: Liste toutes les classes
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '201':
         description: Opération réussie 
       '409':
         description: Classes introuvables
       '500': 
         description: Impossible de trouver les classes
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
   post:
     tags:
       - Classes
-    summary: Crée une nouvelle classe
+    summary: Créer une nouvelle classe
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Classe déjà présent en base
       '500': 
         description: Impossible d'enregistrer la classe ou de vérifier si la classe existe
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
 '/class/{classId}':    
   get:
     tags:
       - Classes
     summary: Affiche les détails d'une classe
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '201':
         description: Opération réussie 
       '409':
         description: Classe introuvable
       '500': 
         description: Impossible de trouver la classe
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: classId
+        in: path
+        description: ID de la classe
+        required: true
+        schema:
+          type: integer
   put:
     tags:
       - Classes
     summary: Met à jour une classe
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Classe introuvable
       '500': 
         description: Impossible de mettre à jour la classe ou de la chercher en base
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: classId
+        in: path
+        description: ID de la classe
+        required: true
+        schema:
+          type: integer
   delete:
     tags:
       - Classes
     summary: Supprime une classe
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Classe introuvable
       '500': 
         description: Impossible de supprimer la classe ou de la chercher en base
-
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: classId
+        in: path
+        description: ID de la classe
+        required: true
+        schema:
+          type: integer
 '/class/{classId}/users':    
   get:
     tags:
       - Classes
     summary: Liste les utilisateurs d'une classe
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '201':
         description: Opération réussie 
       '409':
         description: Utilisateurs introuvables
       '500': 
         description: Impossible de trouver les utilisateurs
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: classId
+        in: path
+        description: ID de la classe
+        required: true
+        schema:
+          type: integer
 
 # Cours
 /lessons:
@@ -235,57 +461,115 @@
       - Cours
     summary: Liste les cours
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '201':
         description: Opération réussie 
       '409':
         description: Cours introuvables
       '500': 
         description: Impossible de trouver les cours
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
   post:
     tags:
       - Cours
-    summary: Crée un nouveau cours
+    summary: Créer un nouveau cours
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Cour déjà présent en base
       '500': 
         description: Impossible d'enregistrer le cours ou de vérifier si le cours existe
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
 '/lessons/{lessonId}':    
   get:
     tags:
       - Cours
     summary: Affiche les détails d'un cours
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '201':
         description: Opération réussie 
       '409':
         description: Cours introuvable
       '500': 
         description: Impossible de trouver le cours
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: lessonsId
+        in: path
+        description: ID du cours
+        required: true
+        schema:
+          type: integer
   put:
     tags:
       - Cours
     summary: Met à jour un cours
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Cours introuvable
       '500': 
         description: Impossible de mettre à jour le cours ou de le chercher en base
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: lessonsId
+        in: path
+        description: ID du cours
+        required: true
+        schema:
+          type: integer
   delete:
     tags:
       - Cours
     summary: Supprime un cours
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Cours introuvable
       '500': 
         description: Impossible de supprimer le cours ou de le chercher en base
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: lessonsId
+        in: path
+        description: ID du cours
+        required: true
+        schema:
+          type: integer
 
 # École
 /schools:
@@ -294,57 +578,115 @@
       - Écoles
     summary: Liste les écoles
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '201':
         description: Opération réussie 
       '409':
         description: Écoles introuvables
       '500': 
         description: Impossible de trouver les écoles
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
   post:
     tags:
       - Écoles
-    summary: Crée une nouvelle école
+    summary: Créer une nouvelle école
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: École déjà présente en base
       '500': 
         description: Impossible d'enregistrer l'école ou de vérifier si l'école existe
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
 '/schools/{schoolId}':    
   get:
     tags:
       - Écoles
     summary: Affiche les détails d'une école
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '201':
         description: Opération réussie 
       '409':
         description: École introuvable
       '500': 
         description: Impossible de trouver l'école
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: schoolId
+        in: path
+        description: ID de l'école
+        required: true
+        schema:
+          type: integer
   put:
     tags:
       - Écoles
     summary: Met à jour une école
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: École introuvable
       '500': 
         description: Impossible de mettre à jour l'école ou de la chercher en base
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: schoolId
+        in: path
+        description: ID de l'école
+        required: true
+        schema:
+          type: integer
   delete:
     tags:
       - Écoles
     summary: Supprime une école
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: École introuvable
       '500': 
         description: Impossible de supprimer l'école ou de la chercher en base
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: schoolId
+        in: path
+        description: ID de l'école
+        required: true
+        schema:
+          type: integer
 
 # Module
 /subjects:
@@ -353,57 +695,115 @@
       - Matières
     summary: Liste les matières
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '201':
         description: Opération réussie 
       '409':
         description: Matières introuvables
       '500': 
         description: Impossible de trouver les matières
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
   post:
     tags:
       - Matières
-    summary: Crée une nouvelle matière
+    summary: Créer une nouvelle matière
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Matière déjà présente en base
       '500': 
         description: Impossible d'enregistrer la matière ou de vérifier si la matière existe
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
 '/subjects/{subjectId}':    
   get:
     tags:
       - Matières
     summary: Affiche les détails d'une matière
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Matière introuvable
       '500': 
         description: Impossible de mettre à jour la matière ou de la chercher en base
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: subjectId
+        in: path
+        description: ID de la matière
+        required: true
+        schema:
+          type: integer
   put:
     tags:
       - Matières
     summary: Met à jour une matière
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Matière introuvable
       '500': 
         description: Impossible de mettre à jour la matière ou de la chercher en base
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: subjectId
+        in: path
+        description: ID de la matière
+        required: true
+        schema:
+          type: integer
   delete:
     tags:
       - Matières
     summary: Supprime une matière
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Matière introuvable
       '500': 
         description: Impossible de supprimer la matière ou de la chercher en base
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: subjectId
+        in: path
+        description: ID de la matière
+        required: true
+        schema:
+          type: integer
 
 # Module
 /modules:
@@ -412,58 +812,116 @@
       - Modules
     summary: Liste tous les modules
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '201':
         description: Opération réussie 
       '409':
         description: Modules introuvables
       '500': 
-        description: Impossible de trouver les modules
+        description: Impossible de trouver les modules  
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
   post:
     tags:
       - Modules
-    summary: Crée un nouveau module
+    summary: Créer un nouveau module
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Module déjà présent en base
       '500': 
         description: Impossible d'enregistrer le module ou de vérifier si le module existe
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
 '/modules/{moduleId}':    
   get:
     tags:
       - Modules
     summary: Affiche les détails d'un module
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '201':
         description: Opération réussie 
       '409':
         description: Module introuvable
       '500': 
         description: Impossible de trouver le module
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: moduleId
+        in: path
+        description: ID du module
+        required: true
+        schema:
+          type: integer
   put:
     tags:
       - Modules
     summary: Met à jour un module
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Module introuvable
       '500': 
         description: Impossible de mettre à jour le module ou de le chercher en base
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: moduleId
+        in: path
+        description: ID du module
+        required: true
+        schema:
+          type: integer
   delete:
     tags:
       - Modules
     summary: Supprime un module
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Module introuvable
       '500': 
         description: Impossible de supprimer le module ou de le chercher en base
-      
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: moduleId
+        in: path
+        description: ID du module
+        required: true
+        schema:
+          type: integer    
+
 # Rôle
 /roles:
   get:
@@ -471,57 +929,115 @@
       - Rôles
     summary: Liste tous les rôle
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '201':
         description: Opération réussie 
       '409':
         description: Rôles introuvables
       '500': 
         description: Impossible de trouver les rôles
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
   post:
     tags:
       - Rôles
-    summary: Crée un nouveau rôle
+    summary: Créer un nouveau rôle
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Rôle déjà présent en base
       '500': 
         description: Impossible d'enregistrer le rôle ou de vérifier si le rôle existe
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
 '/roles/{roleId}':    
   get:
     tags:
       - Rôles
     summary: Affiche les détails d'un rôle
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '201':
         description: Opération réussie 
       '409':
         description: Rôle introuvable
       '500': 
         description: Impossible de trouver le rôle
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: roleId
+        in: path
+        description: ID du rôle
+        required: true
+        schema:
+          type: integer
   put:
     tags:
       - Rôles
     summary: Met à jour un rôle
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Rôle introuvable
       '500': 
         description: Impossible de mettre à jour le rôle ou de le chercher en base
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: roleId
+        in: path
+        description: ID du rôle
+        required: true
+        schema:
+          type: integer
   delete:
     tags:
       - Rôles
     summary: Supprime un rôle
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Rôle introuvable
       '500': 
         description: Impossible de supprimer le rôle ou de le chercher en base
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: roleId
+        in: path
+        description: ID du rôle
+        required: true
+        schema:
+          type: integer
 
 '/roles/{roleId}/users':    
   get:
@@ -529,12 +1045,26 @@
       - Rôles
     summary: Liste les utilisateurs d'un rôle
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '201':
         description: Opération réussie 
       '409':
         description: Utilisateurs introuvables
       '500': 
         description: Impossible de trouver les utilisateurs
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: roleId
+        in: path
+        description: ID du rôle
+        required: true
+        schema:
+          type: integer
 
 # Salle
 /rooms:
@@ -543,54 +1073,112 @@
       - Salles
     summary: Liste toutes les salles
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '201':
         description: Opération réussie 
       '409':
         description: Salles introuvables
       '500': 
         description: Impossible de trouver les salles
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
   post:
     tags:
       - Salles
-    summary: Crée une nouvelle salle
+    summary: Créer une nouvelle salle
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Salle déjà présente en base
       '500': 
         description: Impossible d'enregistrer la salle ou de vérifier si la salle existe
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
 '/rooms/{roomId}':    
   get:
     tags:
       - Salles
     summary: Affiche les détails d'une salle
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '201':
         description: Opération réussie 
       '409':
         description: Salle introuvable
       '500': 
         description: Impossible de trouver la salle
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: roomId
+        in: path
+        description: ID de la salle
+        required: true
+        schema:
+          type: integer
   put:
     tags:
       - Salles
     summary: Met à jour une salle
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Salle introuvable
       '500': 
         description: Impossible de mettre à jour la salle ou de la chercher en base
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: roomId
+        in: path
+        description: ID de la salle
+        required: true
+        schema:
+          type: integer
   delete:
     tags:
       - Salles
     summary: Supprime une salle
     responses:
+      '401':
+        description: Non authorisé - Token incorrect
       '200':
         description: Opération réussie
       '409':
         description: Salle introuvable
       '500': 
         description: Impossible de supprimer la salle ou de la chercher en base
+    parameters:
+      - name: Authorization
+        description: Bearer Token
+        in: header
+        schema:
+          type: string
+      - name: roomId
+        in: path
+        description: ID de la salle
+        required: true
+        schema:
+          type: integer
